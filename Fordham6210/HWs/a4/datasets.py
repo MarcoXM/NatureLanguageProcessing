@@ -8,19 +8,19 @@ import numpy as np
 import random
 from collections import Counter
 import pandas as pd
-from torch.utils.data import Dataloader
+from torch.utils.data import DataLoader
 from utils import prepare_word
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 class Dataset(nn.Module):
-    def __init__(self,filepath,window_size,):
+    def __init__(self,window_size):
         super(Dataset,self).__init__()
-        self.df = pd.read_csv(filepath)
         self.ws = window_size
         self.corpus = None
         self.word2idx = None
         self.idx2word = None
         self.ds = None
+
 
 
     def update(self,corpus):
@@ -49,14 +49,14 @@ class Dataset(nn.Module):
                     continue
                 train_x.append(prepare_word(data[self.ws],self.word2idx))
                 train_y.append(prepare_word(data[w],self.word2idx))
-        ds = np.array(zip(train_x,train_y))
+        ds = np.array([ (x,y) for x,y in zip(train_x,train_y)])
         self.ds = ds
         return self.ds
 
-
+    
 
 def poetloader(dataset,batchsize):
-    return Dataloader(dataset,batch_size = batchsize)
+    return DataLoader(dataset,batch_size = batchsize)
 
 
     
