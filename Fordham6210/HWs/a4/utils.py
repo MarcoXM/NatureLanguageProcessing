@@ -1,12 +1,13 @@
 import re
 import nltk
+import numpy as np
 
 def prepare_word(word,word2idx):
 
     '''
     getting the int of the word! 
     '''
-    return word2idx[word] if word2idx.get(word) is not None else word2idx['<UNK>']
+    return np.array(word2idx[word] if word2idx.get(word) is not None else word2idx['<UNK>'])
 
 
 

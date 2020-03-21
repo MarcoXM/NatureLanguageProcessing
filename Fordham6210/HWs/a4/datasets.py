@@ -49,7 +49,7 @@ class Dataset(nn.Module):
                     continue
                 train_x.append(prepare_word(data[self.ws],self.word2idx))
                 train_y.append(prepare_word(data[w],self.word2idx))
-        ds = np.array([ (x,y) for x,y in zip(train_x,train_y)])
+        ds = [(x,y) for x,y in zip(train_x,train_y)]
         self.ds = ds
         return self.ds
 

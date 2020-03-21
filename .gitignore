@@ -2,10 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+pytorch/text_classification/weights/
 # C extensions
 *.so
-
+*.txt
+.data/
+*.bin
+bert/data/
+.vscode/
 # Distribution / packaging
 .Python
 build/
