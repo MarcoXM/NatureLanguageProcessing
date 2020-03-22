@@ -28,4 +28,4 @@ for iter in tqdm(range(1, n_iters + 1)):
         print('%s (%d %d%%) %.4f' % (timeSince(start), iter, iter / n_iters * 100, loss))
 
     if iter% 2000 == 0:
-        torch.save(rnn.state_dict(),"../weights/text_gen{}.pth".format(loss))
+        torch.save(rnn.state_dict(),"./weights/text_gen{}.pth".format(loss))

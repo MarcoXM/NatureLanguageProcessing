@@ -16,7 +16,7 @@ def inputTensor(line):
     return tensor
 
 max_length = 20
-WEIGHT_PATH = "../weights/text_gen11.314475191964043.pth"
+WEIGHT_PATH = "./weights/text_gen11.23178537686666.pth"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 all_letters = string.ascii_letters + " .,;'-"
 n_letters = len(all_letters) + 1
@@ -52,10 +52,11 @@ def sample(category, start_letter='A',rnn = rnn):
 def multi_samples(category, start_letters='ABC'):
     for start_letter in start_letters:
         print(sample(category, start_letter))
+    print("All names has generated !!")
 
 
 parser = argparse.ArgumentParser(
     description='Text_genneration With Pytorch')
 parser.add_argument("--lang_cate", default="Spanish", type=str, help="inference text")
 args = parser.parse_args()
-print(multi_samples(args.lang_cate, 'CHI'))
+print(multi_samples(category=args.lang_cate, start_letters='CHIV'))
